@@ -50,6 +50,7 @@ export interface Options {
     method?: string;
     headers?: Headers;
     verifyFp?: string;
+    _signature: string;
 }
 export interface TikTokConstructor {
     download: boolean;
@@ -83,6 +84,7 @@ export interface TikTokConstructor {
     headers: Headers;
     verifyFp?: string;
     sessionList?: string[];
+    _signature: string;
 }
 
 export interface Hashtags {

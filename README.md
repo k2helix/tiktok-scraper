@@ -221,7 +221,7 @@ docker run -v /User/blah/downloads:/usr/app/files tiktok-scraper user tiktok -d 
 ## Module
 
 ### Methods
-
+Remember to set the signature in every method, for example .user(id, {_signature: 'your-signature'})
 ```javascript
 .user(id, options) //Scrape posts from a specific user (Promise)
 .hashtag(id, options) //Scrape posts from hashtag section (Promise)
@@ -235,7 +235,6 @@ docker run -v /User/blah/downloads:/usr/app/files tiktok-scraper user tiktok -d 
 
 .getUserProfileInfo('USERNAME', options) // Get user profile information
 .getHashtagInfo('HASHTAG', options) // Get hashtag information
-.signUrl('URL', options) // Get signature for the request
 .getVideoMeta('WEB_VIDEO_URL', options) // Get video meta info, including video url without the watermark
 .getMusicInfo('https://www.tiktok.com/music/original-sound-6801885499343571718', options) // Get music metadata
 ```
@@ -312,7 +311,10 @@ const options = {
 
     // Switch main host to Tiktok test enpoint.
     // When your requests are blocked by captcha you can try to use Tiktok test endpoints.
-    useTestEndpoints: false
+    useTestEndpoints: false,
+
+    // The signature you got from tiktok-signer (https://github.com/k2helix/tiktok-signer)
+    _signature: '',
 };
 ```
 

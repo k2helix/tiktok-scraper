@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fromfile = exports.history = exports.video = exports.getVideoMeta = exports.signUrl = exports.getUserProfileInfo = exports.getMusicInfo = exports.getHashtagInfo = exports.trendEvent = exports.musicEvent = exports.userEvent = exports.hashtagEvent = exports.music = exports.trend = exports.user = exports.hashtag = void 0;
+exports.fromfile = exports.history = exports.video = exports.getVideoMeta = exports.getUserProfileInfo = exports.getMusicInfo = exports.getHashtagInfo = exports.trendEvent = exports.musicEvent = exports.userEvent = exports.hashtagEvent = exports.music = exports.trend = exports.user = exports.hashtag = void 0;
 const os_1 = require("os");
 const fs_1 = require("fs");
 const bluebird_1 = require("bluebird");
@@ -29,7 +29,6 @@ const getInitOptions = () => {
         hdVideo: false,
         timeout: 0,
         tac: '',
-        signature: '',
         verifyFp: (0, helpers_1.makeVerifyFp)(),
         headers: {
             'user-agent': constant_1.default.userAgent(),
@@ -149,22 +148,6 @@ const getUserProfileInfo = async (input, options = {}) => {
     return result;
 };
 exports.getUserProfileInfo = getUserProfileInfo;
-const signUrl = async (input, options = {}) => {
-    if (options && typeof options !== 'object') {
-        throw new TypeError('Object is expected');
-    }
-    if (options.proxyFile) {
-        options.proxy = await proxyFromFile(options === null || options === void 0 ? void 0 : options.proxyFile);
-    }
-    if (options === null || options === void 0 ? void 0 : options.sessionFile) {
-        options.sessionList = await sessionFromFile(options === null || options === void 0 ? void 0 : options.sessionFile);
-    }
-    const contructor = Object.assign(Object.assign(Object.assign({}, getInitOptions()), options), { type: 'signature', input });
-    const scraper = new core_1.TikTokScraper(contructor);
-    const result = await scraper.signUrl();
-    return result;
-};
-exports.signUrl = signUrl;
 const getVideoMeta = async (input, options = {}) => {
     if (options && typeof options !== 'object') {
         throw new TypeError('Object is expected');

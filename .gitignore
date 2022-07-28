@@ -2,6 +2,7 @@ node_modules/
 reverse_eng/
 coverage/
 garbage/
+tiktok-signer/
 
 .DS_Store
 *.csv

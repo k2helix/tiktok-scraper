@@ -40,7 +40,6 @@ const getInitOptions = () => {
         hdVideo: false,
         timeout: 0,
         tac: '',
-        signature: '',
         verifyFp: makeVerifyFp(),
         headers: {
             'user-agent': CONST.userAgent(),
@@ -175,22 +174,22 @@ export const getUserProfileInfo = async (input: string, options = {} as Options)
     return result;
 };
 
-export const signUrl = async (input: string, options = {} as Options): Promise<string> => {
-    if (options && typeof options !== 'object') {
-        throw new TypeError('Object is expected');
-    }
-    if (options.proxyFile) {
-        options.proxy = await proxyFromFile(options?.proxyFile);
-    }
-    if (options?.sessionFile) {
-        options.sessionList = await sessionFromFile(options?.sessionFile);
-    }
-    const contructor: TikTokConstructor = { ...getInitOptions(), ...options, ...{ type: 'signature' as ScrapeType, input } };
-    const scraper = new TikTokScraper(contructor);
+// export const signUrl = async (input: string, options = {} as Options): Promise<string> => {
+//     if (options && typeof options !== 'object') {
+//         throw new TypeError('Object is expected');
+//     }
+//     if (options.proxyFile) {
+//         options.proxy = await proxyFromFile(options?.proxyFile);
+//     }
+//     if (options?.sessionFile) {
+//         options.sessionList = await sessionFromFile(options?.sessionFile);
+//     }
+//     const contructor: TikTokConstructor = { ...getInitOptions(), ...options, ...{ type: 'signature' as ScrapeType, input } };
+//     const scraper = new TikTokScraper(contructor);
 
-    const result = await scraper.signUrl();
-    return result;
-};
+//     const result = await scraper.signUrl();
+//     return result;
+// };
 
 export const getVideoMeta = async (input: string, options = {} as Options): Promise<Result> => {
     if (options && typeof options !== 'object') {

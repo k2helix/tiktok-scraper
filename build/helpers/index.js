@@ -15,5 +15,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./Bar"), exports);
-__exportStar(require("./Signature"), exports);
 __exportStar(require("./Random"), exports);
